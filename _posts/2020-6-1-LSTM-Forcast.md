@@ -1,4 +1,7 @@
-## Forecasting energy intake
+---
+layout: post
+title: Forecasting energy intake
+---
 
 The prevalence of obesity has tripled in the last 40 years and it has been estimated that by 2050, 60% of males and 50% of females may be living with obesity. These increases to obesity are clearly multifaceted, as shown in the by the obesity foresight map below: 
 
@@ -18,7 +21,7 @@ For this post energy expenditure is derived from a recently published accelerome
 
 and energy intake can be approximated from a validated mathematical model [Sanghvi, et al. 2015] (https://academic.oup.com/ajcn/article/102/2/353/4564610) 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23212fb3-6e4d-4de9-bb1c-739aad04523a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23212fb3-6e4d-4de9-bb1c-739aad04523a/Untitled.png)
+![](https://github.com/RJODRISCOLL/rjodriscoll.github.io/blob/master/images/Untitled.png)
 
 The above model describes a linearised model to estimate change in energy intake relative to baseline requirements for the ith interval. 
 
