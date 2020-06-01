@@ -4,12 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+I am an academic based at the University of Leeds with a primary interest in Biogenergetics. I also have a keen interest in data analytics, machine learning and AI.   
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[R.ODriscoll@leeds.ac.uk](mailto:R.ODriscoll@leeds.ac.uk)
