@@ -19,7 +19,7 @@ Simple, right? Not so much.
 
 For this post energy expenditure is derived from a recently published accelerometery based machine learning algorithm  [O'Driscoll, et al. 2020](https://www.tandfonline.com/doi/full/10.1080/02640414.2020.1746088) and energy intake can be approximated from a validated mathematical model [Sanghvi, et al. 2015](https://academic.oup.com/ajcn/article/102/2/353/4564610)   
 
-![Mathematical model of energy intake]("/images/mei.jpg" "Mathematical model of energy intake")
+![Mathematical model of energy intake]("https://github.com/RJODRISCOLL/rjodriscoll.github.io/blob/master/images/mei.jpg" "Mathematical model of energy intake")
 
 
 
