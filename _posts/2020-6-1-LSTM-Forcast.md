@@ -21,10 +21,15 @@ For this post energy expenditure is derived from a recently published accelerome
 
 ![Mathematical model of energy intake](/images/mei.jpg)
 
-
-
 The above model describes a linearised model to estimate change in energy intake relative to baseline requirements for the ith interval. 
 
 The ρ parameter in this model describes the change energy density associated with the estimated change in body composition and *BW* refers to body weight. The parameter ε describes how the rate of energy expenditure depends on the body weight. 
 
 The Δδ term describes changes to energy expenditure over time (derived from the algorithm above). The parameter β accounts for additional energy cost of digestive and adaptive processes. The parameter *f* refers to additional contributions to energy expenditure.
+
+
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
