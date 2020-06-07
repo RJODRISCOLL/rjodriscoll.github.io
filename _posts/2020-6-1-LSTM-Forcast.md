@@ -41,7 +41,7 @@ A more detailed summary of recurrent neural networks and LSTM can be found [here
 
 The model above allows us to approximate 7 day averages in energy intake. WE know that variability will exist in the true energy intake day to day so we can interpolate day to day values but add some gaussian noise, to address this random variation, so our change in energy intake variable now looks like this
 
-![Time series EI](/images/lstmei_EI plot.PNG) 
+![Time series EI](/images/lstmei_EI plot.png) 
 
 ### Forecasting
 
