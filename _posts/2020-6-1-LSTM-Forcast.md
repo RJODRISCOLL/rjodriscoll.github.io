@@ -143,7 +143,7 @@ final_un = sc.inverse_transform(final.reshape(-1, 1))
 
 The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
 
-![Univariate lstm multistep](../images/lstmei_pred2.png)  
+![Univariate lstm multistep](../images/lstmei_pred2.jpg)  
 
 We can see our exact deviations at each daily prediction below: 
 
