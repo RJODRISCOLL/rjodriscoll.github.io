@@ -121,7 +121,7 @@ X, y = mult_lstm_seq(s_t, n_steps_in, n_steps_out)
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
 
-`python
+```python
 # define model - deeper network 
 model = Sequential()
 model.add(LSTM(100, activation='relu', 
@@ -131,7 +131,7 @@ model.add(Dense(n_steps_out))
 model.compile(optimizer='adam', loss='mse')
 
 model.fit(X, y, epochs=100, verbose=1)
-`
+```
 
 Ok, so let's check the predictions on the test set. First, we need to transform our variable back to its original scale using the `inverse_transform`  function. 
 
