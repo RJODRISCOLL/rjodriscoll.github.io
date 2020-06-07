@@ -111,7 +111,7 @@ n_steps_in, n_steps_out = 21, 7
 X, y = mult_lstm_seq(s_t, n_steps_in, n_steps_out)
 ~~~
 
-We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes, set mean squared error as our loss function and use the adam optimiser for the network. Note that for improved prediction, hyperparameters can be refined. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
+We can run the model with the Keras implementation of LSTM. We use [relu activation](https://medium.com/@danqing/a-practical-guide-to-relu-b83ca804f1f7#:~:text=ReLU%20stands%20for%20rectified%20linear,max(0%2C%20x).&text=ReLU%20is%20the%20most%20commonly,usually%20a%20good%20first%20choice.) at each of the 100 nodes, set mean squared error as our loss function and use the [adam optimiser](https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c) for the network. Note that for improved prediction, hyperparameters can be refined but that is beyond the scope of this introductory post. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
 
 ~~~ python
 # define model - deeper network 
@@ -132,11 +132,7 @@ s_un = sc.inverse_transform(s.reshape(-1, 1))
 pred_un = sc.inverse_transform(pred)
 final_un = sc.inverse_transform(final.reshape(-1, 1))
 ~~~
-`
-s_un = sc.inverse_transform(s.reshape(-1, 1))
-pred_un = sc.inverse_transform(pred)
-final_un = sc.inverse_transform(final.reshape(-1, 1))
-`
+
 
 The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
 
