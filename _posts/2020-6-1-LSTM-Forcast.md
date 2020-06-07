@@ -41,7 +41,7 @@ A more detailed summary of recurrent neural networks and LSTM can be found [here
 
 The model above allows us to approximate 7 day averages in energy intake. WE know that variability will exist in the true energy intake day to day so we can interpolate day to day values but add some gaussian noise, to address this random variation, so our change in energy intake variable now looks like this
 
-![Time series EI](/images/lstmei_EI plot.png) 
+![Time series EI](/images/lstmei_EI plot.jpg) 
 
 ### Forecasting
 
@@ -75,7 +75,7 @@ X, y = split(s_t, n_steps)
 
 We now have our data ready for the LSTM 
 
-![Reshaped array](/images/lstmei_dat shape.png)  
+![Reshaped array](/images/lstmei_dat shape.jpg)  
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. 
 
@@ -93,7 +93,7 @@ model.fit(X,
 
 After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence, here we see the prediction with the red circle and the true value with the blue cross. 
 
-![Univariate lstm one step](/images/lstmei_pred 1.png)  
+![Univariate lstm one step](/images/lstmei_pred 1.jpg)  
 
 The error in prediction here is -25.11 kcal/day. However, the interesting and useful analyses here would be to forecast  more than one step ahead. If sufficient accuracy can be achieved then this has the potential to be used to intervene before weight is gained. 
 
