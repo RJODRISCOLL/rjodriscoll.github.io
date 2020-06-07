@@ -49,14 +49,14 @@ Before we do that, it is important to scale out variable with `MinMaxScaler()` f
 
 The code below will split our data into the required shape, with `n_steps` defining the number of inputs into our sequence. This will scale the variable to have a range 0,1 and assists in network convergence
 
-```python
+~~~ python
 sc = MinMaxScaler(feature_range = (0, 1))
 s = sc.fit_transform(dat)
-```
+~~~
 
-Before we run the network we define a training set, which the network will learn from and a testing set, which is the most recent timepoints on which we test our networks prediction capabilities. Once we have a training set (the vector `s_t` below)  we can apply the `split`function to set up the data 
+Before we run the network we define a training set, which the network will learn from and a testing set, which is the most recent timepoints on which we test our networks prediction capabilities. Once we have a training set (the vector `s_t` below)  we can apply the `split` function to set up the data 
 
-```python
+~~~python
 def split(series, time_steps):
     X, y = list(), list()
     for i in range(len(series)):
@@ -69,13 +69,13 @@ def split(series, time_steps):
 
 n_steps = 3
 X, y = split(s_t, n_steps)
-```
+~~~
 
 We now have our data ready for the LSTM 
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. 
 
-```python
+~~~python
 n_features = 1
 X = X.reshape((X.shape[0], X.shape[1], n_features))
 model = Sequential()
@@ -85,7 +85,7 @@ model.compile(optimizer='adam', loss='mse')
 model.fit(X, 
           y, 
           epochs=100)
-```
+~~~
 
 After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence, here we see the prediction with the red circle and the true value with the blue cross. 
 
@@ -97,7 +97,7 @@ The error in prediction here is -25.11 kcal/day. However, the interesting and us
 
 This prediction involves numerous outputs for the network, so our data set up has to be slightly different. The function below can be used to define an array with a given number of inputs `n_steps_in`, and a given number of outputs `n_steps_out`. In our case we aim to forecast 7 days into the future with 21 days as input. 
 
-```python
+~~~ python
 # set data for lstm 
 mult_lstm_seq(series, n_steps_in, n_steps_out):
     X, y = list(), list()
@@ -113,11 +113,11 @@ mult_lstm_seq(series, n_steps_in, n_steps_out):
 # Prepare the dataset for lstm 
 n_steps_in, n_steps_out = 21, 7
 X, y = mult_lstm_seq(s_t, n_steps_in, n_steps_out)
-```
+~~~
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
 
-```python
+~~~ python
 # define model - deeper network 
 model = Sequential()
 model.add(LSTM(100, activation='relu', 
@@ -127,15 +127,15 @@ model.add(Dense(n_steps_out))
 model.compile(optimizer='adam', loss='mse')
 
 model.fit(X, y, epochs=100, verbose=1)
-```
+~~~
 
 Ok, so let's check the predictions on the test set. First, we need to transform our variable back to its original scale using the `inverse_transform`  function. 
 
-```python
+~~~ python
 s_un = sc.inverse_transform(s.reshape(-1, 1))
 pred_un = sc.inverse_transform(pred)
 final_un = sc.inverse_transform(final.reshape(-1, 1))
-```
+~~~
 
 The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
 
@@ -143,7 +143,7 @@ The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, 
 
 We can see our exact deviations at each daily prediction below: 
 
-~~~python 
+~~~ python 
 Deviation at prediction point 0  is equal to:  77.00088774161992 kcal/day
 Deviation at prediction point 1  is equal to:  -14.500476578683639 kcal/day
 Deviation at prediction point 2  is equal to:  31.241940661731483 kcal/day
