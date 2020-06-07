@@ -116,8 +116,7 @@ We can run the model with the Keras implementation of LSTM. We use [relu activat
 ~~~ python
 # define model - deeper network 
 model = Sequential()
-model.add(LSTM(100, activation='relu', 
-										return_sequences=True, input_shape=(n_steps_in, n_features)))
+model.add(LSTM(100, activation='relu', return_sequences=True, input_shape=(n_steps_in, n_features)))
 model.add(LSTM(100, activation='relu'))
 model.add(Dense(n_steps_out))
 model.compile(optimizer='adam', loss='mse')
