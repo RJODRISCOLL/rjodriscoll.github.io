@@ -19,15 +19,15 @@ For this post energy expenditure is derived from a recently published accelerome
 
 The above model describes a linearised model to estimate change in energy intake relative to baseline requirements for the i<sup>th</sup> interval.
 
-The ρ parameter in this model describes the change energy density associated with the estimated change in body composition and *BW* refers to body weight. The parameter ε describes how the rate of energy expenditure depends on the body weight.
+The ρ parameter in this model describes the change in energy density associated with the estimated change in body composition and *BW* refers to body weight. The parameter ε describes how the rate of energy expenditure depends on the body weight.
 
 The Δδ term describes changes to energy expenditure over time (derived from the algorithm in the paper above). The parameter β accounts for additional energy cost of digestive and adaptive processes. The parameter *f* refers to additional contributions to energy expenditure, which in our case is 0.
 
 ### What is a long term short memory neural network?
 
-Before I describe more complex neural network architectures it is important define a more basic neural network. Neural networks  describe a range of algorithms inspired by the biological structure of human neurons. A network will consist of hundreds or thousands of simple, interconnected processing nodes, which are associated with weights which are continually adjusted in the training process to derive outputs. 
+Before I describe more complex neural network architectures it is important to define a more basic neural network. Neural networks  describe a range of algorithms inspired by the biological structure of human neurons. A network will consist of hundreds or thousands of simple, interconnected processing nodes, which are associated with weights which are continually adjusted in the training process to derive outputs. 
 
-A primary limitation of standard neural network models is their limited ability to process sequential, time-series data. This is where recurrent neural networks (RNN) come in. RNN models can learn from sequence of data (i.e. time series) so that each sample can be assumed to be dependent on previous ones. The named 'recurrent' is given because they perform the same task for every element of a sequence, allowing the current prediction to be modelled on the previous outputs.
+A primary limitation of standard neural network models is their limited ability to process sequential, time-series data. This is where recurrent neural networks (RNN) come in. RNN models can learn from sequences of data (i.e. time series) so that each sample can be assumed to be dependent on previous ones. The name 'recurrent' is given because they perform the same task for every element of a sequence, allowing the current prediction to be modelled on the previous outputs.
 
 Long term short memory neural networks (LSTM) build on RNNs and allow a network to retain long-term dependencies at a given time from many timesteps before. RNNs were designed to that effect using a simple feedback approach for neurons where the output sequence of data serves as one of the inputs. However, long term dependencies can make the network untrainable due to the vanishing gradients and difficulties in modelling variables far back in the sequence. LSTM is designed precisely to solve that problem.
 
@@ -43,7 +43,7 @@ The model above allows us to approximate 7 day averages in energy intake. We kno
 
 Before we train a network, it is important to scale out variable with `MinMaxScaler()` from the sklearn module. This will scale the variable to have a range 0,1 and assists in network convergence. 
 
-LSTM requires both features and labels in order to learn. In the context of time series forecasting, it is important to provide the past values as features and future values as labels, so LSTM’s can learn how to predict the future. The keras implementation of LSTM requires a 3D tensor (sample size * time steps * predictive variables)/ The code below will split our data into the required shape, with `n_steps` defining the number of inputs into our sequence.
+LSTM requires both features and labels in order to learn. In the context of time series forecasting, it is important to provide the past values as features and future values as labels, so LSTM’s can learn how to predict the future. The Keras implementation of LSTM requires a 3D tensor (sample size * time steps * predictive variables). The code below will split our data into the required shape, with `n_steps` defining the number of inputs into our sequence.
 
 Before we run the network we define a training set (which the network will learn from) and a testing set, which is the most recent timepoints on which we test our network's predictions. Once we have a training set (the vector `s_t` below)  we can apply the `split` function to set up the data 
 
@@ -69,13 +69,13 @@ This prediction involves numerous outputs for the network, so our data set up ha
 
 ![code 3](../images/lstmei_c3.JPG)  
 
-We can run the model with the Keras implementation of LSTM. We use [relu activation](https://medium.com/@danqing/a-practical-guide-to-relu-b83ca804f1f7#:~:text=ReLU%20stands%20for%20rectified%20linear,max(0%2C%20x).&text=ReLU%20is%20the%20most%20commonly,usually%20a%20good%20first%20choice.) at each of the 100 nodes, set mean squared error as our loss function and use the [adam optimiser](https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c) for the network. Note that for improved prediction, hyperparameters can be refined but that is beyond the scope of this introductory post. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
+We can run the model with the Keras implementation of LSTM. We use [relu activation](https://medium.com/@danqing/a-practical-guide-to-relu-b83ca804f1f7#:~:text=ReLU%20stands%20for%20rectified%20linear,max(0%2C%20x).&text=ReLU%20is%20the%20most%20commonly,usually%20a%20good%20first%20choice.) at each of the 100 nodes, set mean squared error as our loss function and use the [adam optimiser](https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c) for the network. Note that for improved prediction, hyperparameters can be refined but that is beyond the scope of this introductory post. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out'.
 
 
 ![code 4](../images/lstmei_c4.JPG)  
 Ok, so let's check the predictions on the test set. First, we need to transform our variable back to its original scale using the `inverse_transform` function. 
 
-The predictions can be seen in the plot below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
+The predictions can be seen in the plot below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad. 
 
 ![Univariate lstm multistep](../images/lstmei_pred2.jpg)  
 
