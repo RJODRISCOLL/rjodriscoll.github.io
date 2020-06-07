@@ -99,7 +99,7 @@ Deviation at prediction point 6  is equal to:  -23.866922631354946 kcal/day
 
 ### Conclusions
 
-In this post I introduced univariate LSTM neural networks for forecasting human energy intake. Moderate accuracy was achieved in in the next outcomes. Importantly, we did not refine the hyperparameters or experiment with multivariate inputs and additional subjects, which is an aim for the future! 
+In this post I introduced univariate LSTM neural networks for forecasting human energy intake. Moderate accuracy was achieved in predicting the next outcomes. Importantly, we did not refine the hyperparameters or experiment with multivariate inputs and additional subjects, which is an aim for the future! 
 
 I would like to extend huge thanks to Aurelien Geron (Hands-on ML) and Jason Brownlee (Machine learning mastery) for their amazing machine learning recourses. 
 
