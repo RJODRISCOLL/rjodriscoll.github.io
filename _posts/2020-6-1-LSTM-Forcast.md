@@ -51,14 +51,14 @@ Before we do that, it is important to scale out variable with `MinMaxScaler()` f
 
 The code below will split our data into the required shape, with `n_steps` defining the number of inputs into our sequence. This will scale the variable to have a range 0,1 and assists in network convergence
 
-```python
+```
 sc = MinMaxScaler(feature_range = (0, 1))
 s = sc.fit_transform(dat)
 ```
 
 Before we run the network we define a training set, which the network will learn from and a testing set, which is the most recent timepoints on which we test our networks prediction capabilities. Once we have a training set (the vector `s_t` below)  we can apply the `split`function to set up the data 
 
-```python
+```
 def split(series, time_steps):
     X, y = list(), list()
     for i in range(len(series)):
@@ -79,7 +79,7 @@ We now have our data ready for the LSTM
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. 
 
-```python
+```
 n_features = 1
 X = X.reshape((X.shape[0], X.shape[1], n_features))
 model = Sequential()
@@ -101,7 +101,7 @@ The error in prediction here is -25.11 kcal/day. However, the interesting and us
 
 This prediction involves numerous outputs for the network, so our data set up has to be slightly different. The function below can be used to define an array with a given number of inputs `n_steps_in`, and a given number of outputs `n_steps_out`. In our case we aim to forecast 7 days into the future with 21 days as input. 
 
-```python
+```
 # set data for lstm 
 mult_lstm_seq(series, n_steps_in, n_steps_out):
     X, y = list(), list()
@@ -121,7 +121,7 @@ X, y = mult_lstm_seq(s_t, n_steps_in, n_steps_out)
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
 
-```python
+```
 # define model - deeper network 
 model = Sequential()
 model.add(LSTM(100, activation='relu', 
