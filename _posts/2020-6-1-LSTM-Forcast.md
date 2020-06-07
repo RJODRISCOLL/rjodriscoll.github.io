@@ -9,7 +9,7 @@ Evidence suggests that once this weight has been gained, it is hard to lose and 
 
 But first we need to be able to estimate energy intake...
 
-### An introduction to modelling energy intake
+### An introduction to modelling energy intake 
 
 Above I introduced the first law of thermodynamics in the context of human bodyweight. The first which means that if we know just two of these values continuously, we can estimate the third, EI = EE + ΔES.
 
