@@ -47,37 +47,13 @@ LSTM requires both features and labels in order to learn. In the context of time
 
 Before we run the network we define a training set (which the network will learn from) and a testing set, which is the most recent timepoints on which we test our network's predictions. Once we have a training set (the vector `s_t` below)  we can apply the `split` function to set up the data 
 
-~~~python
-def split(series, time_steps):
-    X, y = list(), list()
-    for i in range(len(series)):
-        end_ind = i + time_steps # get end
-        if end_ind > len(series)-1:
-            break
-        X.append(series[i:end_ind]) # append to the list
-        y.append(series[end_ind]) # append to the list
-    return np.array(X), np.array(y)
-
-n_steps = 3
-X, y = split(s_t, n_steps)
-~~~
 ![code 1](../images/lstmei_c1.JPG)  
 
 We now have our data ready for the LSTM!
 
 We can run the model with the Keras implementation of LSTM. We use relu activation at each of the 100 nodes, set mean squared error as our loss function and use the adam optimiser. Note that for improved prediction, hyperparameters can be refined. 
 
-~~~ python
-n_features = 1
-X = X.reshape((X.shape[0], X.shape[1], n_features))
-model = Sequential()
-model.add(LSTM(100, activation='relu', input_shape=(n_steps, n_features)))
-model.add(Dense(1)) 
-model.compile(optimizer='adam', loss='mse') 
-model.fit(X, 
-          y, 
-          epochs=100)
-~~~
+
 ![code 2](../images/lstmei_c2.JPG)  
 
 After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence, here we see the prediction with the red circle and the true value with the blue cross. 
@@ -90,37 +66,12 @@ The error in prediction here is -9.9 kcal/day. However, the interesting and usef
 
 This prediction involves numerous outputs for the network, so our data set up has to be slightly different. The function below can be used to define an array with a given number of inputs `n_steps_in`, and a given number of outputs `n_steps_out`. In our case we aim to forecast 7 days into the future with 21 days as input. 
 
-~~~ python
-# set data for lstm 
-mult_lstm_seq(series, n_steps_in, n_steps_out):
-    X, y = list(), list()
-    for i in range(len(series)):
-        ind = i + n_steps_in
-        end_ind = ind + n_steps_out
-        if end_ind > len(series):
-            break
-        X.append(series[i:ind])
-        y.append(series[ind:end_ind])
-    return np.array(X), np.array(y)
 
-# Prepare the dataset for lstm 
-n_steps_in, n_steps_out = 21, 7
-X, y = mult_lstm_seq(s_t, n_steps_in, n_steps_out)
-~~~
 ![code 3](../images/lstmei_c3.JPG)  
 
 We can run the model with the Keras implementation of LSTM. We use [relu activation](https://medium.com/@danqing/a-practical-guide-to-relu-b83ca804f1f7#:~:text=ReLU%20stands%20for%20rectified%20linear,max(0%2C%20x).&text=ReLU%20is%20the%20most%20commonly,usually%20a%20good%20first%20choice.) at each of the 100 nodes, set mean squared error as our loss function and use the [adam optimiser](https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c) for the network. Note that for improved prediction, hyperparameters can be refined but that is beyond the scope of this introductory post. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
 
-~~~ python
-# define model - deeper network 
-model = Sequential()
-model.add(LSTM(100, activation='relu', return_sequences=True, input_shape=(n_steps_in, n_features)))
-model.add(LSTM(100, activation='relu'))
-model.add(Dense(n_steps_out))
-model.compile(optimizer='adam', loss='mse')
 
-model.fit(X, y, epochs=100, verbose=1)
-~~~
 ![code 4](../images/lstmei_c4.JPG)  
 Ok, so let's check the predictions on the test set. First, we need to transform our variable back to its original scale using the `inverse_transform` function. 
 
