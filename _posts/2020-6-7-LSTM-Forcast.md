@@ -61,7 +61,7 @@ def split(series, time_steps):
 n_steps = 3
 X, y = split(s_t, n_steps)
 ~~~
-![code 1](../images/lstmei_c1.jpg)  
+![code 1](../images/lstmei_c1.JPG)  
 
 We now have our data ready for the LSTM!
 
@@ -78,7 +78,7 @@ model.fit(X,
           y, 
           epochs=100)
 ~~~
-![code 2](../images/lstmei_c2.jpg)  
+![code 2](../images/lstmei_c2.JPG)  
 
 After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence, here we see the prediction with the red circle and the true value with the blue cross. 
 
@@ -107,7 +107,7 @@ mult_lstm_seq(series, n_steps_in, n_steps_out):
 n_steps_in, n_steps_out = 21, 7
 X, y = mult_lstm_seq(s_t, n_steps_in, n_steps_out)
 ~~~
-![code 3](../images/lstmei_c3.jpg)  
+![code 3](../images/lstmei_c3.JPG)  
 
 We can run the model with the Keras implementation of LSTM. We use [relu activation](https://medium.com/@danqing/a-practical-guide-to-relu-b83ca804f1f7#:~:text=ReLU%20stands%20for%20rectified%20linear,max(0%2C%20x).&text=ReLU%20is%20the%20most%20commonly,usually%20a%20good%20first%20choice.) at each of the 100 nodes, set mean squared error as our loss function and use the [adam optimiser](https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c) for the network. Note that for improved prediction, hyperparameters can be refined but that is beyond the scope of this introductory post. You can see that I add another layer to the network here, which again has 100 nodes but our output layer is now outputting the number of outputs defined by `n_steps_out`
 
@@ -121,7 +121,7 @@ model.compile(optimizer='adam', loss='mse')
 
 model.fit(X, y, epochs=100, verbose=1)
 ~~~
-![code 4](../images/lstmei_c4.jpg)  
+![code 4](../images/lstmei_c4.JPG)  
 Ok, so let's check the predictions on the test set. First, we need to transform our variable back to its original scale using the `inverse_transform` function. 
 
 The predictions can be seen in the plot below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
