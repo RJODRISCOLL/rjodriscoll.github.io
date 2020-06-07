@@ -3,16 +3,7 @@ layout: post
 title: Forecasting energy intake
 ---
 
-{% highlight python %}
-def foo
-  puts 'foo'
-end
-{% endhighlight %}
-
-
-The prevalence of obesity has tripled in the last 40 years and it has been estimated that by 2050, 60% of males and 50% of females may be living with obesity. These increases to obesity are clearly multifaceted, as shown in the by the obesity foresight map below:
-
-Despite this complexity, a simple ineluctable law (first law of thermodynamics) underlies any change in human body weight; body weight can only change when the rate of energy intake exceeds the rate of energy expenditure. I.e. (change in energy stores = energy intake - energy expenditure).
+The prevalence of obesity has tripled in the last 40 years and it has been estimated that by 2050, 60% of males and 50% of females may be living with obesity. These increases to obesity are undoubtedly multifaceted and complex. Despite this complexity, a simple ineluctable law (first law of thermodynamics) underlies any change in human body weight; body weight can only change when the rate of energy intake exceeds the rate of energy expenditure. I.e. (change in energy stores = energy intake - energy expenditure).
 
 Evidence suggests that once this weight has been gained, it is hard to lose and even harder to prevent weight regain after weight loss. So this poises the question, can we forecast perturbations to energy intake with advanced neural network architectures?
 
