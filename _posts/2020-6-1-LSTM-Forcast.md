@@ -143,7 +143,7 @@ The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, 
 
 We can see our exact deviations at each daily prediction below: 
 
-```python
+~~~python 
 Deviation at prediction point 0  is equal to:  77.00088774161992 kcal/day
 Deviation at prediction point 1  is equal to:  -14.500476578683639 kcal/day
 Deviation at prediction point 2  is equal to:  31.241940661731483 kcal/day
@@ -151,7 +151,7 @@ Deviation at prediction point 3  is equal to:  27.205713040355203 kcal/day
 Deviation at prediction point 4  is equal to:  7.0701560600501505 kcal/day
 Deviation at prediction point 5  is equal to:  19.855179293375905 kcal/day
 Deviation at prediction point 6  is equal to:  -23.866922631354946 kcal/day
-```
+~~~
 
 ### Conclusions
 
