@@ -41,7 +41,7 @@ A more detailed summary of recurrent neural networks and LSTM can be found [here
 
 The model above allows us to approximate 7 day averages in energy intake. WE know that variability will exist in the true energy intake day to day so we can interpolate day to day values but add some gaussian noise, to address this random variation, so our change in energy intake variable now looks like this
 
-![Time series EI](../images/lstmei_EI plot.jpg) 
+![Time series EI](../images/lstmei_EIplot.jpg) 
 
 ### Forecasting
 
@@ -93,7 +93,7 @@ model.fit(X,
 
 After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence, here we see the prediction with the red circle and the true value with the blue cross. 
 
-![Univariate lstm one step](/images/lstmei_pred 1.jpg)  
+![Univariate lstm one step](/images/lstmei_pred1.jpg)  
 
 The error in prediction here is -25.11 kcal/day. However, the interesting and useful analyses here would be to forecast  more than one step ahead. If sufficient accuracy can be achieved then this has the potential to be used to intervene before weight is gained. 
 
@@ -143,7 +143,7 @@ final_un = sc.inverse_transform(final.reshape(-1, 1))
 
 The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
 
-![Univariate lstm multistep](../images/lstmei_pred 2.png)  
+![Univariate lstm multistep](../images/lstmei_pred2.png)  
 
 We can see our exact deviations at each daily prediction below: 
 
