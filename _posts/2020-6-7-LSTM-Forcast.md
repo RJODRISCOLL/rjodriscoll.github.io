@@ -17,7 +17,7 @@ For this post energy expenditure is derived from a recently published accelerome
 
 ![Mathematical model of energy intake ](../images/mei.jpg) 
 
-The above model describes a linearised model to estimate change in energy intake relative to baseline requirements for the i <sup>th</sup> interval.
+The above model describes a linearised model to estimate change in energy intake relative to baseline requirements for the i<sup>th</sup> interval.
 
 The ρ parameter in this model describes the change energy density associated with the estimated change in body composition and *BW* refers to body weight. The parameter ε describes how the rate of energy expenditure depends on the body weight.
 
