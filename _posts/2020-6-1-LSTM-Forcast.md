@@ -103,7 +103,7 @@ This prediction involves numerous outputs for the network, so our data set up ha
 
 ```python
 # set data for lstm 
-~~d~~ef mult_lstm_seq(series, n_steps_in, n_steps_out):
+mult_lstm_seq(series, n_steps_in, n_steps_out):
     X, y = list(), list()
     for i in range(len(series)):
         ind = i + n_steps_in
