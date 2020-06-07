@@ -73,8 +73,6 @@ X, y = split(s_t, n_steps)
 
 We now have our data ready for the LSTM 
 
-![Reshaped array](../images/lstmei_dat shape.jpg)  
-
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. 
 
 ```python
