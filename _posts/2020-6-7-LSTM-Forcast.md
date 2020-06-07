@@ -43,11 +43,6 @@ The model above allows us to approximate 7 day averages in energy intake. We kno
 
 Before we train a network, it is important to scale out variable with `MinMaxScaler()` from the sklearn module. This will scale the variable to have a range 0,1 and assists in network convergence. 
 
-~~~ python
-sc = MinMaxScaler(feature_range = (0, 1))
-s = sc.fit_transform(dat)
-~~~
-
 LSTM requires both features and labels in order to learn. In the context of time series forecasting, it is important to provide the past values as features and future values as labels, so LSTM’s can learn how to predict the future. The keras implementation of LSTM requires a 3D tensor (sample size * time steps * predictive variables)/ The code below will split our data into the required shape, with `n_steps` defining the number of inputs into our sequence.
 
 Before we run the network we define a training set (which the network will learn from) and a testing set, which is the most recent timepoints on which we test our network's predictions. Once we have a training set (the vector `s_t` below)  we can apply the `split` function to set up the data 
@@ -71,7 +66,7 @@ We now have our data ready for the LSTM!
 
 We can run the model with the Keras implementation of LSTM. We use relu activation at each of the 100 nodes, set mean squared error as our loss function and use the adam optimiser. Note that for improved prediction, hyperparameters can be refined. 
 
-~~~python
+~~~ python
 n_features = 1
 X = X.reshape((X.shape[0], X.shape[1], n_features))
 model = Sequential()
