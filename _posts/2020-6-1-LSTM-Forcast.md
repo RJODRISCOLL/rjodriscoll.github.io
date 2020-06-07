@@ -19,7 +19,7 @@ Simple, right? Not so much.
 
 For this post energy expenditure is derived from a recently published accelerometery based machine learning algorithm [O'Driscoll, et al. 2020](https://www.tandfonline.com/doi/full/10.1080/02640414.2020.1746088) and energy intake can be approximated from a validated mathematical model [Sanghvi, et al. 2015](https://academic.oup.com/ajcn/article/102/2/353/4564610) 
 
-![Mathematical model of energy intake ](/images/mei.jpg) 
+![Mathematical model of energy intake ](../images/mei.jpg) 
 
 The above model describes a linearised model to estimate change in energy intake relative to baseline requirements for the ith interval.
 
@@ -41,7 +41,7 @@ A more detailed summary of recurrent neural networks and LSTM can be found [here
 
 The model above allows us to approximate 7 day averages in energy intake. WE know that variability will exist in the true energy intake day to day so we can interpolate day to day values but add some gaussian noise, to address this random variation, so our change in energy intake variable now looks like this
 
-![Time series EI](/images/lstmei_EI plot.jpg) 
+![Time series EI](../images/lstmei_EI plot.jpg) 
 
 ### Forecasting
 
@@ -75,7 +75,7 @@ X, y = split(s_t, n_steps)
 
 We now have our data ready for the LSTM 
 
-![Reshaped array](/images/lstmei_dat shape.jpg)  
+![Reshaped array](../images/lstmei_dat shape.jpg)  
 
 We can run the model with the Keras implementation of LSTM. We use relu activeation at each of the 100 nodes. We set mean squared error as our loss function and use the adam optimiser.  Note that for improved prediction, hyperparameters can be refined. 
 
@@ -143,7 +143,7 @@ final_un = sc.inverse_transform(final.reshape(-1, 1))
 
 The predictions can be seen below. The RMSE over 7 day forecast 35.29 kcal/day, which isn't too bad 
 
-![Univariate lstm multistep](/images/lstmei_pred 2.png)  
+![Univariate lstm multistep](../images/lstmei_pred 2.png)  
 
 We can see our exact deviations at each daily prediction below: 
 
