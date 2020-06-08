@@ -56,11 +56,11 @@ We can run the model with the Keras implementation of LSTM. We use relu activati
 
 ![code 2](../images/lstmei_c2.JPG)  
 
-After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence, here we see the prediction with the red circle and the true value with the blue cross. 
+After we have defined and trained our network, we can feed 3 new points to the network and ask it to predict the next value in the sequence. Here we see the prediction with the red circle and the true value with the blue cross. 
 
 ![Univariate lstm one step](/images/lstmei_pred1.jpg)  
 
-The error in prediction here is -9.9 kcal/day. However, the interesting and useful analyses here would be to forecast more than one step ahead. If sufficient accuracy can be achieved then this has the potential to be used to intervene before weight is gained. 
+The error in prediction here is -9.9 kcal/day. However, the more interesting and useful analyses here would be to forecast more than one step ahead. If sufficient accuracy can be achieved then this has the potential to be used to intervene before weight is gained. 
 
 ### Multi-step output LSTM
 
